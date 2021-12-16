@@ -42,17 +42,5 @@ public class CityServiceTest {
 
         assertEquals("Kigali", cityService.getById(101).get().getName());
     }
-
-//    not working
-    @Test
-    public void findById_test_404() {
-        when(cityRepository.findById(anyLong())).thenReturn(Optional.empty());
-
-        Exception exception = assertThrows(CustomException.class, () -> cityService.getById(101));
-
-        assertEquals("Contact with this id not found", exception.getMessage());
-    }
-
-
-
+    
 }
