@@ -37,7 +37,7 @@ public class CityServiceTest {
 
     @Test
     public void all_test_fail() {
-        when(cityRepositoryMock.findAll())
+        when(cityRepository.findAll())
                 .thenReturn(null);
         assertEquals(null,cityService.getAll());
     }
@@ -65,13 +65,19 @@ public class CityServiceTest {
 
         assertEquals(false, cityService.existsByName("Kagali"));
     }
-
 //    @Test
-//    public void createCity_success() {
-//        CreateCityDTO cityDTO = new CreateCityDTO("Huye",27);
-//        when(cityRepository.save(any(City.class))).thenReturn(new City(cityDTO.getName(),cityDTO.getWeather()));
-//
-//        assertEquals(cityDTO.getName(), cityService.save(cityDTO).getName());
-//        assertEquals(TempratureFahrenheitConversion.tempToFah(cityDTO.getWeather()), cityService.save(cityDTO).getFahrenheit());
+//    public void save_success() {
+//        CreateCityDTO createCityDTO = new CreateCityDTO("Nyanza", 24);
+//        City city = new City(createCityDTO.getName(),createCityDTO.getWeather());
+//        City createdCity = new City(105,createCityDTO.getName(),createCityDTO.getWeather(), 0);
+//        when(cityRepository.save(city))
+//                .thenReturn(createdCity);
+//        assertEquals(createdCity, cityService.save(createCityDTO));
 //    }
+
+    @Test
+    public void calculateFahrenheit_success() {
+        City city = new City("Kigali", 28);
+        assertEquals(125.5, cityService.calculateFahrenheit(city));
+    }
 }
