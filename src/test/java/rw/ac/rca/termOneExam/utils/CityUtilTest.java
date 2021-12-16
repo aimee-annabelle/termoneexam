@@ -71,7 +71,7 @@ public class CityUtilTest {
 
     @Test
     public void list_mocking() {
-        City city = new City("Butare",21);
+        City city = new City("Butare",25);
         List<City> mockList = mock(List.class);
         when(mockList.size()).thenReturn(5);
         assertEquals(5, mockList.size());
